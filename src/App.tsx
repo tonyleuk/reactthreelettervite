@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+'use client';
+import { Canvas } from '@react-three/fiber';
+import { useLoader } from '@react-three/fiber';
+import { Suspense } from 'react';
+import { PresentationControls, Environment, ContactShadows, useGLTF, SpotLight } from '@react-three/drei'
+import { GLTFLoader } from 'three/examples/jsm/Addons.js';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    /* const gltf = useLoader(GLTFLoader, '/reactthreeletter/Letter.glb') */
 
-export default App
+    return (
+        <div style={{ height: "100dvh" }}>
+            <Canvas>
+                <Suspense fallback={<span>Loading...</span>}>
+                <ambientLight intensity={0.05} />
+                <SpotLight position={[1, 2, 1]} angle={0.75} penumbra={1} shadow-mapSize={2048} castShadow />
+                    <PresentationControls
+                    global
+                    config={{ mass: 1, tension: 100 }}
+                    snap
+                    rotation={[-0.1, 0.0, 0]}
+                    polar={[-Math.PI / 1, Math.PI / 1]}
+                    azimuth={[-Math.PI / 1, Math.PI / 1]}>
+                        {/* <mesh
+                        object={gltf.scene}
+                        scale={3}
+                        castShadow
+                        receiveShadow
+                        >
+                            <meshBasicMaterial color="royalblue" />
+                        </mesh>   */}    
+                        {/* <primitive scale={3} object={gltf.scene} />    */}           
+                    </PresentationControls>
+                    <ContactShadows position={[0, -1.4, 0]} opacity={0.25} scale={10} blur={3} far={4} />
+                </Suspense>
+            </Canvas>
+        </div>
+    );
+};
+
+
+/* scale={isMobile ? 0.7 : 0.75}
+        position={isMobile ? [0, -3, -2.2] : [0, -3.25, -1.5]}
+        rotation={[-0.01, -0.2, -0.1]}
+        object={gltf.scene} */
+
+
+export default App;
