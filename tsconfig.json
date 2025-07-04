@@ -3,5 +3,10 @@
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ]
+  ],
+  "compilerOptions": {
+    "skipLibCheck": true,            // <== This prevents checking node_modules generics
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+  }
 }

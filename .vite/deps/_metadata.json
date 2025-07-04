@@ -1,0 +1,82 @@
+{
+  "hash": "7fc5b79d",
+  "configHash": "27ff1000",
+  "lockfileHash": "2f616b47",
+  "browserHash": "b718ae12",
+  "optimized": {
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "cd301c50",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "130f75c9",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "94368ead",
+      "needsInterop": true
+    },
+    "@react-three/fiber": {
+      "src": "../../node_modules/@react-three/fiber/dist/react-three-fiber.esm.js",
+      "file": "@react-three_fiber.js",
+      "fileHash": "b36fe93d",
+      "needsInterop": false
+    },
+    "@react-three/drei": {
+      "src": "../../node_modules/@react-three/drei/index.js",
+      "file": "@react-three_drei.js",
+      "fileHash": "1e118c37",
+      "needsInterop": false
+    },
+    "@react-spring/three": {
+      "src": "../../node_modules/@react-spring/three/dist/react-spring_three.modern.mjs",
+      "file": "@react-spring_three.js",
+      "fileHash": "d7f86324",
+      "needsInterop": false
+    },
+    "three/examples/jsm/loaders/GLTFLoader": {
+      "src": "../../node_modules/three/examples/jsm/loaders/GLTFLoader.js",
+      "file": "three_examples_jsm_loaders_GLTFLoader.js",
+      "fileHash": "956adb8b",
+      "needsInterop": false
+    },
+    "canvas-confetti": {
+      "src": "../../node_modules/canvas-confetti/dist/confetti.module.mjs",
+      "file": "canvas-confetti.js",
+      "fileHash": "da44e077",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "hls-EDFNCPQN": {
+      "file": "hls-EDFNCPQN.js"
+    },
+    "vision_bundle-3QUMERFG": {
+      "file": "vision_bundle-3QUMERFG.js"
+    },
+    "chunk-UNBWEIXX": {
+      "file": "chunk-UNBWEIXX.js"
+    },
+    "chunk-3DGYJ27U": {
+      "file": "chunk-3DGYJ27U.js"
+    },
+    "chunk-WQO47N26": {
+      "file": "chunk-WQO47N26.js"
+    },
+    "chunk-TVFQMRVC": {
+      "file": "chunk-TVFQMRVC.js"
+    },
+    "chunk-ZSV6WWUK": {
+      "file": "chunk-ZSV6WWUK.js"
+    },
+    "chunk-G3PMV62Z": {
+      "file": "chunk-G3PMV62Z.js"
+    }
+  }
+}

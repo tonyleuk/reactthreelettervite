@@ -1,5 +1,6 @@
 #root {
-  
+  overflow: hidden;
+  touch-action: none; /* Also helps with touch gestures */
 }
 
 text {
@@ -18,7 +19,7 @@ text {
   font-size: 2.875rem;
   font-weight: 600;
   line-height: 1.25rem;
-  padding: .75rem 1rem;
+  padding: 2.5rem 2rem;
   text-align: center;
   text-decoration: none #D1D5DB solid;
   text-decoration-thickness: auto;
