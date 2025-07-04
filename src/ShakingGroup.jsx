@@ -31,28 +31,28 @@ export default function ShakingGroup() {
     ref: rotateRef,
     from: { rotation: [Math.PI * 0.68, 0, 0] },
     to: { rotation: [-Math.PI * 0.35, 0, 0] },
-    config: { mass: 1, tension: 170, friction: 26 },
+    config: { mass: 1, tension: 170, friction: 26, },
   });
 
   const downSpring = useSpring({
     ref: downRef,
-    from: { position: [0, 0, 0] },
-    to: { position: [0, -4, 0] },
-    config: { mass: 1, tension: 100, friction: 26 },
+    from: { position: [0, 0, 0]/* , scale: [1, 0.5, 1] */ },
+    to: { position: [0, -4, 0]/* , scale: [1, 1, 1] */ },
+    config: { mass: 4, tension: 100, friction: 26, },
   });
 
   const scaleSpring = useSpring({
     ref: scaleRef,
-    from: { scale: [3, 1.6, 3] },
-    to: { scale: [3, 3, 3] },
-    config: { mass: 1, tension: 250, friction: 26 },
+    from: { scale: [1, 0.8, 1] },
+    to: { scale: [1, 1, 1] },
+    config: { duration: 100},
   });
 
   const upSpring = useSpring({
     ref: upRef,
-    from: { position: [0, -0.05, 0.001] },
-    to: { position: [0, 1.1, 0] },
-    config: { mass: 1, tension: 250, friction: 26 },
+    from: { position: [0, -0.05, 0.001]/* , scale: [1, 0.5, 1] */ },
+    to: { position: [0, 1.1, 0.01]/* , scale: [1, 1, 1] */ },
+    config: { mass: 4, tension: 450, friction: 32, },
   });
 
   // Gold confetti trigger using canvas-confetti
@@ -80,12 +80,12 @@ export default function ShakingGroup() {
 
   // Stop shaking after 2 seconds
   useEffect(() => {
-    const timer = setTimeout(stopShaking, 2000);
+    const timer = setTimeout(stopShaking, 3000);
     return () => clearTimeout(timer);
   }, []);
 
   // Sequence animation only after shaking stops
-  useChain(stopped ? [rotateRef, downRef, scaleRef, upRef] : [], [0, 0.5, 0.8, 1.1]);
+  useChain(stopped ? [rotateRef, scaleRef, downRef, upRef] : [], [0, 0.5, .5, .5]);
 
   // Trigger confetti only once after shaking stops
   const confettiCalledRef = useRef(false);
@@ -112,8 +112,8 @@ export default function ShakingGroup() {
     else return lerp(-5, 0, (t - 0.75) / 0.25);
   }
 
-  const shakeDuration = 1600; // ms
-  const restDuration = 200; // ms
+  const shakeDuration = 350; // ms
+  const restDuration = 0; // ms
   const totalCycle = shakeDuration + restDuration;
   const startTimeRef = useRef(performance.now());
 
@@ -138,12 +138,12 @@ export default function ShakingGroup() {
   });
 
   return (
-    <a.group ref={groupRef} onClick={handleClick} position={[0, 1.25, 0]} style={{ cursor: 'pointer' }}>
-      <a.primitive scale={3} object={gltf.scene} castShadow receiveShadow {...downSpring} />
-      <a.primitive scale={3} object={gltf2.scene} castShadow receiveShadow {...rotateSpring} {...downSpring} />
-      <a.group {...upSpring} {...scaleSpring}>
-        <a.primitive object={lettergltf.scene} castShadow receiveShadow />
-        <Html scale={0.33} position={[0, -0.66, 0]} transform occlude>
+    <a.group ref={groupRef} onClick={handleClick} position={[0, 1.25, 0]} style={{ cursor: 'pointer' }} {...scaleSpring}>
+      <a.primitive scale={[2.5,5,5]} object={gltf.scene} castShadow receiveShadow {...downSpring} />
+      <a.primitive scale={[2.5,5,5]} object={gltf2.scene} castShadow receiveShadow {...rotateSpring} {...downSpring} />
+      <a.group {...upSpring} >
+        <a.primitive scale={2.35} object={lettergltf.scene} castShadow receiveShadow />
+        <Html scale={1} position={[0, -1.66, 0.01]} transform occlude>
           <div>
             <h1>Hello Bob, join us on</h1>
             <h2>
