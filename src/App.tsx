@@ -31,12 +31,12 @@ export default function App() {
 
   if (isMobile === null) return null; // Avoid rendering until device check is complete
 
-  /* const fov = isMobile ? 40 : 40; */
+  const fov = isMobile ? 50 : 40;
 
   return (
     <div style={{ margin: '0 auto', width: '100%', height: '100vh' }}>
       <Canvas
-        camera={{ position: [0, 0, 8], fov: 50 }}
+        camera={{ position: [0, 0, 8], fov: fov }}
         style={{ touchAction: 'none' }}
         shadows
       >

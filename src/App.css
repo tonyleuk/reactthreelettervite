@@ -5,6 +5,13 @@
   touch-action: none; /* Also helps with touch gestures */
 }
 
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
 text {
   font-family: 'Courier New', Courier, monospace;
   font-size: .2em;
