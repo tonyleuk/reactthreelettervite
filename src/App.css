@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
+
 #root {
   overflow: hidden;
   touch-action: none; /* Also helps with touch gestures */
@@ -10,16 +12,18 @@ text {
 
 /* CSS */
 .button-38 {
-  background-color: #FFFFFF;
+  background-color: #f1f1ee;
   border: 0;
-  border-radius: .5rem;
+  border-radius: 5.5rem;
   box-sizing: border-box;
-  color: #111827;
-  font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-  font-size: 2.875rem;
+  color: #6c6c6a;
+  font-family: "Forum", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3rem;
   font-weight: 600;
-  line-height: 1.25rem;
-  padding: 2.5rem 2rem;
+  line-height: 0;
+  padding: 2.5rem;
   text-align: center;
   text-decoration: none #D1D5DB solid;
   text-decoration-thickness: auto;
@@ -28,6 +32,10 @@ text {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 4px;
+  
 }
 
 .button-38:hover {

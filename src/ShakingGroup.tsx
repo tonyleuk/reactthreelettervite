@@ -31,21 +31,21 @@ export default function ShakingGroup() {
 
   const rotateSpring = useSpring({
     ref: rotateRef,
-    from: { rotation: [Math.PI * 0.68, 0, 0] as [number, number, number] },
-    to: { rotation: [-Math.PI * 0.35, 0, 0] as [number, number, number] },
+    from: { rotation: [Math.PI * .9, 0, 0] as [number, number, number] },
+    to: { rotation: [-Math.PI * 0, 0, 0] as [number, number, number] },
     config: { mass: 1, tension: 170, friction: 26 },
   });
 
   const downSpring = useSpring({
     ref: downRef,
     from: { position: [0, 0, 0] as [number, number, number] },
-    to: { position: [0, -2.2, 0] as [number, number, number] },
+    to: { position: [0, -3.5, 0] as [number, number, number] },
     config: { mass: 4, tension: 100, friction: 26 },
   });
 
   const scaleSpring = useSpring({
     ref: scaleRef,
-    from: { scale: [1, 0.8, 1] as [number, number, number] },
+    from: { scale: [1, .65, 1] as [number, number, number] },
     to: { scale: [1, 1, 1] as [number, number, number] },
     config: { duration: 100 },
   });
@@ -54,18 +54,18 @@ export default function ShakingGroup() {
     ref: upRef,
     from: { position: [0, -0.05, 0.001] as [number, number, number] },
     to: { position: [0, 1.15, 0.01] as [number, number, number] },
-    config: { mass: 4, tension: 450, friction: 32 },
+    config: { mass: 8, tension: 450, friction: 32 },
   });
 
   const triggerGoldConfetti = () => {
     confetti({
       particleCount: 150,
-      spread: 90,
-      origin: { y: 0.6 },
+      spread: 250,
+      origin: { y: .15 },
       colors: ['#FFD700', '#FFC700', '#FFB800'],
-      gravity: 0.3,
+      gravity: 1.2,
       scalar: 1.2,
-      ticks: 200,
+      ticks: 300,
       shapes: ['square', 'circle'],
     });
   };
@@ -128,13 +128,34 @@ export default function ShakingGroup() {
     }
   });
 
+  const [name, setName] = useState<string | null>(null); // Start as null
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const urlName = params.get('n');
+    setName(urlName || 'Guest'); // Always set it on mount
+  }, []);
+  if (!name) return null; // Optional: or a loading placeholder
+
+  const minSize = 8; // px
+  const maxSize = 11; // px
+  const minChars = 8;
+  const maxChars = 16;
+
+  // Clamp name length between min and max char limits
+  const length = Math.min(Math.max(name.length, minChars), maxChars);
+
+  // Interpolate font size
+  const t = (maxChars - length) / (maxChars - minChars); // goes from 1 to 0
+  const fontSize = minSize + (maxSize - minSize) * t;
+
   return (
     <a.group
       ref={groupRef}
       onClick={handleClick}
       onPointerOver={() => setHovered(true)}
       onPointerOut={() => setHovered(false)}
-      position={[0, 1.25, 0]}
+      position={[0, 1.5, 0]}
       {...scaleSpring}
     >
       <a.group scale={[3.5, 6, 5]} {...(downSpring as any)}>
@@ -146,18 +167,40 @@ export default function ShakingGroup() {
       </a.group>
 
       <a.group {...(upSpring as any)}>
-        <primitive scale={3.25} object={lettergltf.scene} castShadow receiveShadow />
+        <primitive scale={[3.25,3.35,3.25]} object={lettergltf.scene} castShadow receiveShadow />
         <Html scale={1} position={[0, -2.25, 0.01]} transform occlude>
           <div>
-            <h1>Hello Bob, join us on</h1>
-            <h2>
-              May 9th 2026 <br />
-              London
+            <h1 style={{ fontSize: `${fontSize}px`, lineHeight: '.9', transition: 'font-size 0.3s ease'}}>Dear {name}, </h1>
+            <h2 >together with their families & friends,</h2>
+            <h3>- Kathy & Leon -</h3>
+            <h2 style={{lineHeight: '.9'}}>
+              <br/>wish to invite you to celebrate  <br/>
+              their marriage on <strong>9th May</strong> at <strong>21:34</strong> at <br/> <br/>
             </h2>
-            <h3>Kathy & Leon</h3>
-            <button className="button-38" onClick={triggerGoldConfetti}>
-              Celebrate
-            </button>
+            <h1>- your local pub - <br/></h1>
+            <button className="button-38" onClick={() => {
+              triggerGoldConfetti();
+              setTimeout(() => {
+                window.open('https://withjoy.com/kathy-and-leon/', '_blank');
+              }, 400); // Delay in milliseconds (1000ms = 1s)
+            }}>
+              More Info
+            </button>  
+            <h2 style={{lineHeight: '.9'}}>
+              <br/>
+              Kindly respond by <strong>April 6th</strong>
+              <br/> to confirm your attendance.
+            </h2>
+            <button className="button-38" 
+            onClick={() => {
+              triggerGoldConfetti();
+              setTimeout(() => {
+                window.open('https://withjoy.com/kathy-and-leon/rsvp', '_blank');
+              }, 400); // Delay in milliseconds (1000ms = 1s)
+            }}>
+              RSVP
+            </button>          
+                      
           </div>
         </Html>
       </a.group>
