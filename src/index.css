@@ -1,16 +1,19 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 1400;
+  font-size: .1em;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: rgb(0, 0, 0);
   background-color: #d6d5d1;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  text-align: center;
 }
 
 body {
@@ -21,5 +24,13 @@ body {
 
 h1 {
   font-size: 3.2em;
-  line-height: 1.1;
+  line-height: 1.5;
+}
+h2 {
+  font-size: 2em;
+  line-height: 1.5;
+}
+h3 {
+  font-size: 4em;
+  line-height: 1.5;
 }
