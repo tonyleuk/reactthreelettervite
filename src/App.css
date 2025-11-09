@@ -9,48 +9,7 @@
 
 text {
   font-family: 'Courier New', Courier, monospace;
-  font-size: .2em;
-}
-
-/* CSS */
-.button-38 {
-  background-color: #f1f1ee;
-  border: 0;
-  border-radius: 5.5rem;
-  box-sizing: border-box;
-  color: #6c6c6a;
-  font-family: "Forum", serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 3rem;
-  font-weight: 600;
-  line-height: 0;
-  padding: 2.5rem;
-  text-align: center;
-  text-decoration: none #D1D5DB solid;
-  text-decoration-thickness: auto;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  margin-right: 10px;
-  margin-left: 10px;
-  margin-top: 4px;
-  
-}
-
-.button-38:hover {
-  background-color: rgb(249,250,251);
-}
-
-.button-38:focus {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
-
-.button-38:focus-visible {
-  box-shadow: none;
+  font-size: 12px;
 }
 
 .shake {

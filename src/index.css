@@ -1,12 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Rouge+Script&family=Tangerine:wght@400;700&family=Charmonman:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Pinyon+Script&display=swap');
 
 :root {
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  line-height: 1.5;
-  font-weight: 1400;
-  font-size: .1em;
-
-  color-scheme: light dark;
+  font-family:Cormorant;
+  margin: 0;
+  padding: 0; 
   color: #414141;
   background-color: #e7dce2;
 
@@ -15,7 +12,18 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  backface-visibility: hidden;
+  text-rendering: geometricPrecision;
+
   text-align: center;
+
+  color-scheme: light;
+  supported-color-schemes: light;
+  background-color: #ffffff;
+}
+
+canvas {
+  display: block;
 }
 
 body {
@@ -25,36 +33,71 @@ body {
 }
 
 h1 {
-  font-size: 7.5em;
-  line-height: .0;
-  font-family: "Tangerine", cursive;
-  font-weight: 700;
+  font-size: 2.1vh;
+  font-family: "Cormorant", serif;
+  font-weight: 1500;
   font-style: normal;
 }
 h2 {
-  font-size: 5.5em;
-  line-height: 0.8;
-  font-family: "Tangerine", cursive;
+  font-size: 1.9vh;
+  font-family: "Cormorant", serif;
   font-weight: 400;
   font-style: normal;
   margin: .4em;
 }
 h3 {
-  font-family: "Rouge Script", cursive;
+  font-family: "Pinyon Script", cursive;
   font-weight: 100;
   font-style: normal;
-  font-size: 10em;
-  line-height: 0;
+  font-size: 4.2vh;
   margin-bottom: .6em;
+  text-shadow:
+    0px 1px 1px rgba(233, 204, 143, 0.584), 
+    0px -1px 2px rgba(0, 0, 0, 0.2);    
+     
 }
-h4 {
+
+
+.gold-gradient {
+  color: #414141;
+  background: linear-gradient(90deg, #b38540, #dead63, #c9a54c, #d19f54, #997238);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* h4 {
   font-family: "Charmonman", cursive;
+  font-size: 1.8vh;
   font-weight: 700;
   font-style: normal;
+} */
+h5 {
+  font-size: 1.75vh;
+  font-family: "Cormorant", serif;
+  font-weight: 400;
+  font-style: italic;
+  margin: .4em;
 }
 strong {
-  color: rgb(137, 126, 83);
+  color: rgb(193, 170, 102);
 }
+
+
+/* .clickable-text {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  color: #000000;
+  text-decoration: none; 
+}
+
+.clickable-text::after {
+  text-decoration: underline;
+}
+
+.clickable-text:hover::after {
+  text-decoration: underline;
+} */
 
 
 /* @media (max-width: 768px) {
@@ -88,14 +131,3 @@ strong {
   }
 } */
 
-.tangerine-regular {
-  font-family: "Tangerine", cursive;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.tangerine-bold {
-  font-family: "Tangerine", cursive;
-  font-weight: 700;
-  font-style: normal;
-}

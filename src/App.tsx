@@ -1,7 +1,7 @@
 import './App.css';
 import { Canvas, useThree } from '@react-three/fiber';
 import { Suspense, useState, useLayoutEffect } from 'react';
-import { Environment, PresentationControls } from '@react-three/drei';
+import { Environment, PresentationControls/* , OrbitControls */ } from '@react-three/drei';
 import ShakingGroup from './ShakingGroup';
 import * as THREE from 'three';
 
@@ -67,30 +67,34 @@ export default function App() {
 
   if (isMobile === null) return null; // Avoid rendering until device check is complete
 
-  const fov = isMobile ? 50 : 40;
+  const fov = isMobile ? 40 : 40; //50 : 40
 
   return (
-    <div style={{ margin: '0 auto', width: '100%', height: '100vh' }}>
+    <div style={{ margin: '0 auto', width: '100%', height: '100vh', background: 'linear-gradient(180deg, #C2B4A1 0%, #A5937D 100%)', }}>
       <Canvas
-        camera={{ position: [0, 0, 8], fov: fov }}
-        style={{ touchAction: 'none' }}
+        camera={{ position: [0, 0, 9], fov: fov }}
+        style={{ touchAction: 'none', width: '100vw', height: '100vh' }}
+        dpr={[1, 2]} // limit to avoid blurry text
         shadows
       >
         <ResizeFix />
         <Suspense fallback={null}>
           <ambientLight intensity={3} />
+          {/* <OrbitControls/> */} 
           <PresentationControls
             global
             snap
             polar={[0, 0]}
             azimuth={[0, 0]}
           >
-            <ShakingGroup />
+          <group position={[0, 0.1, 0]}>  {/* 👈 moves contents down visually */}
+              <ShakingGroup />
+            </group>
           </PresentationControls>
           <Environment
             preset="apartment"
-            environmentIntensity={0.25}
-            background
+            environmentIntensity={0.1}
+            /* background */
             blur={1}
           />
         </Suspense>

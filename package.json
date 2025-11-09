@@ -13,11 +13,12 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "@react-spring/three": "^10.0.1",
-    "@react-three/drei": "^10.2.0",
-    "@react-three/fiber": "^9.1.2",
+    "@react-spring/three": "^10.0.3",
+    "@react-spring/web": "^10.0.3",
+    "@react-three/drei": "^10.7.6",
+    "@react-three/fiber": "^9.4.0",
     "@types/three": "^0.178.0",
-    "canvas-confetti": "^1.9.3",
+    "canvas-confetti": "^1.9.4",
     "gh-pages": "^6.3.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
